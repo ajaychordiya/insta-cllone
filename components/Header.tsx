@@ -13,6 +13,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 function Header() {
   const { data: session } = useSession();
+  let img: string = session?.user?.image || "";
 
   const handleSignin = (e: any) => {
     e.preventDefault();
@@ -63,7 +64,7 @@ function Header() {
               <UserGroupIcon className="navBtn" />
               <HeartIcon className="navBtn" />
               <img
-                src={session?.user?.image}
+                src={img}
                 className="h-10 w-10 rounded-full"
                 onClick={handleSignout}
               />
